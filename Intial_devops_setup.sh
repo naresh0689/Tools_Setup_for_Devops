@@ -5,6 +5,9 @@
 #to install openssh-server
 #sudo apt-get install openssh-server -y
 
+#to install apache server
+#sudo apt-get install apache2 -y
+
 #to install java
 #sudo apt install software-properties-common -y
 
