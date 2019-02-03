@@ -30,10 +30,10 @@
 
 #sudo mkdir /opt/maven
 
-cd /opt/maven && \
-   wget http://mirrors.estointernet.in/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz && \
-   tar -xvf apache-maven-3.6.0-bin.tar.gz && \
-   mv apache-maven-3.6.0/ apache-maven/
+#cd /opt/maven && \
+   #wget http://mirrors.estointernet.in/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz && \
+   #tar -xvf apache-maven-3.6.0-bin.tar.gz && \
+   #mv apache-maven-3.6.0/ apache-maven/
 
 #run below command for setup maven path
 #cd /etc/profile.d/
@@ -50,6 +50,7 @@ cd /opt/maven && \
 #run below command to configure the maven_path
 #chmod +x maven.sh
 #source maven.sh
+#mvn -version
 
 #sudo mkdir /opt/tomcat && \
      #cd /opt/tomcat/ && wget http://mirrors.estointernet.in/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.tar.gz && \
@@ -84,9 +85,9 @@ cd /opt/maven && \
 #sudo apt-key fingerprint 0EBFCD88
 
 #sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
+   #"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   #$(lsb_release -cs) \
+   #stable"
 
 #sudo apt-get update
 
