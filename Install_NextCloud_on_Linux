@@ -1,0 +1,93 @@
+# Next_Cloud_Version:15.0
+# if your os is ubuntu then place # on every centos commands & for centos place # on every ubuntu commands 
+
+#Step-1:Update your systems
+# for ubuntu systems
+sudo apt-get update && apt-get upgrade -y
+
+# for centos systems
+sudo yum update && yum -y upgrade
+
+# for centos we need to release epel repo to install required packeges
+sudo yum install -y epel-release
+
+#Step-2:Install web server to host the nextcloud
+#for ubuntu apache2
+sudo apt-get install apache2 -y
+
+# enable apache2 server at boot time on your system
+systemctl enable apache2
+
+# after enable you need start your apache2 server
+systemctl start apache2
+
+#for centos httpd
+sudo yum install -y httpd
+
+#enable httpd server at boot time on your sysytem
+systemctl enable httpd.service
+
+#Step-3:Install PHP 7.0 on your systems
+# for ubuntu
+sudo apt-get install php7.0 libapache2-mod-php7.0 php7.0-intl && \
+php7.0-gd php7.0-json php7.0-mysql php7.0-common php7.0-curl php7.0-mbstring && \
+php7.0-mcrypt php7.0-xml php-imagick php7.0-zip -y
+
+#for centos
+yum install -y php7.0 libapache2-mod-php7.0 php7.0-intl && \
+php7.0-gd php7.0-json php7.0-mysql php7.0-common php7.0-curl php7.0-mbstring && \
+php7.0-mcrypt php7.0-xml php-imagick php7.0-zip
+
+#Step-4: Install mysql server on your system,enable and run it.
+# for ubuntu
+sudo apt-get install mysql-server -y
+
+# enable mysql server at boot time on your system
+systemctl enable mysql
+
+#Intial startup your mysql sever
+systemctl start mysql
+
+# for Centos
+yum install -y mysql-sever
+
+#enable at boot time
+systemctl enable mysqld
+
+#Intial startup
+systemctl start mysqld
+
+# To create a new database for your NextCloud installation, run the following commands
+mysql
+mysql>CREATE DATABASE nextcloud_db;
+mysql>GRANT ALL PRIVILEGES ON nextcloud_db.* TO 'nextcloud_user'@'localhost' IDENTIFIED BY 'PASSWORD';
+mysql>FLUSH PRIVILEGES;
+mysql>exit;
+
+# Step-5: Download Nextcloud version:15.0
+#for this firstly we need install wget & unzip
+#for ubuntu
+sudo apt-get install wget unzip -y
+
+#for centos
+yum install -y wget unzip
+
+#downloading the nextcloud on installed web server path
+cd /var/www
+wget wget https://download.nextcloud.com/server/releases/nextcloud-15.0.0.zip
+unzip nextcloud-15.0.0.zip
+chown -R www-data:www-data nextcloud
+rm -f nextcloud-15.0.0.zip
+
+
+
+
+
+
+
+
+
+
+
+
+
