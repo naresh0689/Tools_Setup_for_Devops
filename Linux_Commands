@@ -71,24 +71,8 @@ sudo useradd -m -d testuser && echo testuser:123456 | chpasswd # it creates home
 #if we want to record the errors or messages while executing the scripting,by using special characters we can
 ls sampl.sh smmal.lkkl 2> out.txt
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# if we want to assign the variable as work as alias and to search by variable .by functions it's possible
+function lsf {
+         ls -ltr | grep $1
+ } # paste the script in bash_profile
 
