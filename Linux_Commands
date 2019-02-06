@@ -41,6 +41,53 @@ ls samla.sh || echo "file not found"
 # by test command we can test the command or file and then push alert
 test -f sampl.sh && echo "Script Found" || echo "Script not found"
 
+# if we want to push the code or info into file we can use below commad
+echo "Hi pushing code into file" > sample.txt
+
+# if we want append the data to existing data 
+echo "Appending data" >> sample.txt
+
+# if we want to print the multiple lines of data
+cat <<EOT
+HI
+Hello
+HIFI
+EOT # where EOT is end of text where <<EOT is called Heredocs
+
+# or if we want to push or create the file with written info
+cat <<EOT > sample1.txt
+writting
+file
+by
+cat
+command
+EOT
+
+#if we want to give password to user while creating new one without user interface
+sudo adduser testuser --stdin <<< "testuser" #for centos
+sudo useradd testuser && echo testuser:123456 | chpasswd # it won't create home directory
+sudo useradd -m -d testuser && echo testuser:123456 | chpasswd # it creates home directory and where 123456 is password
+
+#if we want to record the errors or messages while executing the scripting,by using special characters we can
+ls sampl.sh smmal.lkkl 2> out.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
