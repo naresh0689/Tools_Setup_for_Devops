@@ -3,7 +3,7 @@ sudo apt-get install python3 -y
 
 #create python file by cat command
 cat <<EOT> new_python.py
->myname = naveen
+>myname = "naveen"
 >print(myname)
 >EOT
 
@@ -12,7 +12,7 @@ python3 new_python.py
 # output:naveen
 
 # if we want to display the output string in lower case, by adding .lower() library
-myname = NaVeen
+myname = "NaVeen"
 print(myname.lower())
 #output:naveen
 
@@ -20,7 +20,7 @@ print(myname.lower())
 vi new_python.py
 #paste below script
 #!/usr/bin/python3.6
-myname = Naveen
+myname = "Naveen"
 print(myname.lower())
 
 #granting execution permisions
@@ -34,10 +34,26 @@ chmod +x new_python.py
 vi new_python.py
 #paste below script
 #!/usr/bin/python3.6
-fname = naveen
-lname = kumar
+fname = "naveen"
+lname = "kumar"
 print(fname,lname)
 
 #run below command for .py files
 ./new_python.py
 #output:naveen kumar
+
+#if we want to add users by array's we can add
+vi new_python.py
+#paste below script
+#!/usr/bin/python3.6
+users = ["user1","user2","user3"]
+print(users)
+
+#run below command for .py files
+./new_python.py
+#output:['user1','user2','user3']
+
+
+
+
+
