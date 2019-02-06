@@ -1,0 +1,47 @@
+# to display the list of files by time with modified date from earlier to newest
+ls -ltr
+
+#if we want to create a replica of any command or job or file we will use alias
+alias l="ls -ltr"
+
+#if we assign any variable or print some message to all shells,sub shells,users,groups etc we will use .bashrc
+.bashrc
+
+# if we want to assign variable or print some message to all shells,sub shells,users we will use .bash_profile
+.bash_profile
+
+# for example if we see last time logged into shell,sub shell we will use .bash_logout
+.bash_logout
+vi .bash_logout
+
+# add below info to record last logged in
+echo " last logged in to the shell is $(date or time)"
+
+# to run the job in baground by adding & to end of the job
+sleep 5 &
+
+#where 1 is the job no 1 executed previously and it will run baground
+bg %1
+
+# if we want to run the job on foreground
+fg %1
+
+# if we want to run the job in baground,even we logged out from shell
+nohup job name
+
+# In script file we want to know whether executed or failed for this we will use cases
+if some command; then echo "command ran successfully"; else echo "command failed"; fi
+
+#by AND function we can also know the status by adding && to command if it executes succssfully then second command will execute
+ls sampl.sh && echo "Found sampl.sh"
+
+# by OR function also we will know the status
+ls samla.sh || echo "file not found"
+
+# by test command we can test the command or file and then push alert
+test -f sampl.sh && echo "Script Found" || echo "Script not found"
+
+
+
+
+
