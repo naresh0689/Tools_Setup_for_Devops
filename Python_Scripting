@@ -1,0 +1,43 @@
+# Install python latest version
+sudo apt-get install python3 -y
+
+#create python file by cat command
+cat <<EOT> new_python.py
+>myname = naveen
+>print(myname)
+>EOT
+
+# run python file by python3
+python3 new_python.py
+# output:naveen
+
+# if we want to display the output string in lower case, by adding .lower() library
+myname = NaVeen
+print(myname.lower())
+#output:naveen
+
+# By adding #!/python_path to header of the file,we can run directly
+vi new_python.py
+#paste below script
+#!/usr/bin/python3.6
+myname = Naveen
+print(myname.lower())
+
+#granting execution permisions
+chmod +x new_python.py
+
+#run below command for .py files
+./new_python.py
+#output:naveen
+
+# if we want to print first and last name together (fname,lname)
+vi new_python.py
+#paste below script
+#!/usr/bin/python3.6
+fname = naveen
+lname = kumar
+print(fname,lname)
+
+#run below command for .py files
+./new_python.py
+#output:naveen kumar
