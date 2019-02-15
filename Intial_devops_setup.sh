@@ -1,18 +1,18 @@
 #!/bin/bash
 
-#sudo apt-get update -y && apt-get upgrade -y && apt-get clean
+sudo apt-get update -y && apt-get upgrade -y && apt-get clean
 
 #to install openssh-server
-#sudo apt-get install openssh-server -y
+sudo apt-get install openssh-server -y
 
 #to install apache server
-#sudo apt-get install apache2 -y
+sudo apt-get install apache2 -y
 
 #to install java
-#sudo apt install software-properties-common -y
+sudo apt install software-properties-common -y
 
-#sudo apt-get install default-jdk -y && \
-     #apt-get install default-jre -y
+sudo apt-get install default-jdk -y && \
+     apt-get install default-jre -y
 
 #to know the java path
 #sudo update-alternatives --config java
@@ -60,13 +60,10 @@
      #tar -xvf apache-tomcat-9.0.14.tar.gz && mv  apache-tomcat-9.0.14/ tomcat9/
 
 #granting execute permissions for all files in bin folder
-#chmod +x /opt/tomcat/bin/*
+#chmod +x /opt/tomcat/tomcat9/bin/*
 
 #run below command to setup tomcat_path
-#nano ~/.bashrc
-
-#paste below config to run tomcat server
-#export CATALINA_HOME=/opt/"tomcat_path"
+#echo 'export CATALINA_HOME=/opt/tomcat/tomcat9 >> ~/.bashrc
 
 #run below command to config the tomcat
 #source ~/.bashrc
@@ -98,14 +95,68 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
 docker --version
 # kubernetes setup
-sudo apt-get update && sudo apt-get install -y apt-transport-https && \
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && \
-echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list && \
-sudo apt-get update && \
-sudo apt-get install -y kubectl kubeadm kubelet
-echo kubectl version
+#sudo apt-get update && sudo apt-get install -y apt-transport-https && \
+#curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && \
+#echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list && \
+#sudo apt-get update && \
+#sudo apt-get install -y kubectl kubeadm kubelet
+#echo kubectl version
 
-curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
-  && chmod +x minikube && \
-  sudo cp minikube /usr/local/bin && rm minikube
-echo minikube vresion
+#curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+  #&& chmod +x minikube && \
+  #sudo cp minikube /usr/local/bin && rm minikube
+#echo minikube version
+
+#Installing Ruby
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+sudo apt-get update
+sudo apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev nodejs yarn
+
+cd
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+exec $SHELL
+
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+exec $SHELL
+
+rbenv install 2.6.1
+rbenv global 2.6.1
+ruby -v
+
+gem install bundler
+
+#Installing Rails
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+gem install rails -v 5.2.2
+
+rails -v
+
+#Installing MySQL
+sudo apt-get install -y mysql-server mysql-client libmysqlclient-dev
+
+#Installing PostgreSQL
+sudo sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
+wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install -y postgresql-common
+sudo apt-get install -y postgresql-9.5 libpq-dev
+
+
+
+
+
+
+
+
+
+
+
+
