@@ -164,21 +164,13 @@ docker --version
 #sudo apt-get install -y postgresql-9.5 libpq-dev
 
 # Instaliing Zentyal server on linux machine
-curl -s download.zentyal.com/install | sudo sh
+#curl -s download.zentyal.com/install | sudo sh
 
 # to log in to the zentyal server we need to add user to admin group
-
-sudo usermod -a -G admin username
+#sudo usermod -a -G admin username
 
 # Installing openvpn
 sudo apt install openvpn -y
-
-
-
-
-
-
-
 
 
 
