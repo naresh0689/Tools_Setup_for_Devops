@@ -40,15 +40,15 @@ sudo apt-get install default-jdk -y && \
 
 #run below command for setup maven path
 #cd /etc/profile.d/
-#vim maven.sh
-
+#cat << EOT > maven.sh
 #paste below comfig for maven
 # Apache Maven Environment Variables
 # MAVEN_HOME for Maven 1 - M2_HOME for Maven 2
 #export JAVA_HOME=/usr/lib/jvm/jdk_path
-#export M2_HOME=/opt/maven_path
-#export MAVEN_HOME=/opt/apache-maven
+#export M2_HOME=/opt/maven/apache-maven
+#export MAVEN_HOME=/opt/maven/apache-maven
 #export PATH=${M2_HOME}/bin:${PATH}
+#EOT
 
 #run below command to configure the maven_path
 #chmod +x maven.sh
@@ -63,7 +63,7 @@ sudo apt-get install default-jdk -y && \
 #chmod +x /opt/tomcat/tomcat9/bin/*
 
 #run below command to setup tomcat_path
-#echo 'export CATALINA_HOME=/opt/tomcat/tomcat9 >> ~/.bashrc
+#echo 'export CATALINA_HOME=/opt/tomcat/tomcat9' >> ~/.bashrc
 
 #run below command to config the tomcat
 #source ~/.bashrc
@@ -157,7 +157,7 @@ curl -s download.zentyal.com/install | sudo sh
 sudo usermod -a -G admin username
 
 # Installing openvpn
-sudo apt install -y openvpn
+sudo apt install openvpn -y
 
 
 
