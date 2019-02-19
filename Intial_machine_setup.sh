@@ -1,6 +1,20 @@
 #!/bin/bash
-
+sudo apt install software-properties-common -y
 sudo apt-get update -y && apt-get upgrade -y && apt-get clean
+
+# Installind curl browser
+sudo apt-get install curl -y
+
+# Installing network tools
+sudo apt-get install net-tools
+
+# Installing htools app to view the ram and process digitally
+sudo apt-get install htop -y
+
+# Installing python
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt-get update
+sudo apt-get install python3.7 -y
 
 #to install openssh-server
 sudo apt-get install openssh-server -y
@@ -78,7 +92,7 @@ sudo apt-get install \
     ca-certificates \
     curl \
     gnupg-agent \
-    software-properties-common
+    software-properties-common -y
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
