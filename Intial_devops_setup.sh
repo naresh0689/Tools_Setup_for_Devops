@@ -108,47 +108,56 @@ docker --version
 #echo minikube version
 
 #Installing Ruby
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+#curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+#curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -#
+#echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-sudo apt-get update
-sudo apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev nodejs yarn
+#sudo apt-get update
+#sudo apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev nodejs yarn
 
-cd
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-exec $SHELL
+#cd
+#git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+#echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+#echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+#exec $SHELL
 
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-exec $SHELL
+#git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+#echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+#exec $SHELL
 
-rbenv install 2.6.1
-rbenv global 2.6.1
-ruby -v
+#rbenv install 2.6.1
+#rbenv global 2.6.1
+#ruby -v
 
-gem install bundler
+#gem install bundler
 
 #Installing Rails
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt-get install -y nodejs
+#curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+#sudo apt-get install -y nodejs
 
-gem install rails -v 5.2.2
+#gem install rails -v 5.2.2
 
-rails -v
+#rails -v
 
 #Installing MySQL
-sudo apt-get install -y mysql-server mysql-client libmysqlclient-dev
+#sudo apt-get install -y mysql-server mysql-client libmysqlclient-dev
 
 #Installing PostgreSQL
-sudo sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
-wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
-sudo apt-get update
-sudo apt-get install -y postgresql-common
-sudo apt-get install -y postgresql-9.5 libpq-dev
+#sudo sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
+#wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+#sudo apt-get update
+#sudo apt-get install -y postgresql-common
+#sudo apt-get install -y postgresql-9.5 libpq-dev
 
+# Instaliing Zentyal server on linux machine
+curl -s download.zentyal.com/install | sudo sh
+
+# to log in to the zentyal server we need to add user to admin group
+
+sudo usermod -a -G admin username
+
+# Installing openvpn
+sudo apt install -y openvpn
 
 
 
