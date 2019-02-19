@@ -6,7 +6,7 @@ sudo apt-get update -y && apt-get upgrade -y && apt-get clean
 sudo apt-get install curl -y
 
 # Installing network tools
-sudo apt-get install net-tools
+sudo apt-get install net-tools -y
 
 # Installing htools app to view the ram and process digitally
 sudo apt-get install htop -y
