@@ -172,6 +172,10 @@ docker --version
 # Installing openvpn
 sudo apt install openvpn -y
 
+# Installing gnome tweak tool which contains adanced options for ubuntu gui
+sudo add-apt-repository universe
+sudo apt install gnome-tweak-tool
+
 
 
 
