@@ -1,0 +1,44 @@
+#!/bin/bash
+
+#for i in 1 2 3 4 5
+#do
+#echo "welcome $i times"
+#done
+
+
+#Creating files with numbers upto 5
+##!/bin/bash
+
+for i in {1..5}
+do
+ touch $i
+done
+
+# Deleting files named upto 5
+
+#!/bin/bash
+
+for i in {1..5}
+do
+  rm $i
+done
+
+#specify the days in loop
+
+#!/bin/bash
+i=1
+for day in Mon Tue Wed Thur Fri Sat
+do
+  echo " Weekday $((i++)) : $day"
+done
+
+
+#Fetch the list of users in your machine
+
+#!/bin/bash
+
+i=1
+for username in 'awk -F: '(print $1)' /etc/passwd'
+do
+  echo "username $((i++)) : $username"
+done
