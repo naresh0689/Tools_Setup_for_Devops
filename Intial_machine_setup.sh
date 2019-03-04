@@ -92,32 +92,56 @@ sudo $ptoin install default-jdk -y && \
 #run below command to config the tomcat
 #source ~/.bashrc
 #echo $CATALINA_HOME
+if [ $ptoin=apt ] then
+    clear
+         echo " Your Machine is Ubuntu"
+             
+sudo apt-get remove docker docker-engine docker.io containerd runc
 
-sudo $ptoin remove docker docker-engine docker.io containerd runc
+sudo apt-get update
 
-sudo $ptoin update
-
-sudo $ptoin install \
-    $ptoin-transport-https \
+sudo apt-get install \
+    apt-transport-https \
     ca-certificates \
     curl \
     gnupg-agent \
     software-properties-common -y
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo $ptoin-key add -
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-sudo $ptoin-key fingerprint 0EBFCD88
+sudo apt-key fingerprint 0EBFCD88
 
-sudo $ptoin-apt-repository \
+sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
 
-sudo $ptoin update
+sudo apt-get update
 
-sudo $ptoin install docker-ce docker-ce-cli containerd.io -y
+sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
 docker --version
+else [ $ptoin=yum ] then
+clear
+     echo "Your Machine is Centos"
+     sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+      sudo yum install -y yum-utils \
+      device-mapper-persistent-data \
+      lvm2
+      sudo yum-config-manager \
+      --add-repo \
+      https://download.docker.com/linux/centos/docker-ce.repo
+      sudo yum install docker-ce docker-ce-cli containerd.io
+      sudo systemctl start docker
+      docker --version
+fi
 # kubernetes setup
 #sudo $ptoin update && sudo $ptoin install -y $ptoin-transport-https && \
 #curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo $ptoin-key add - && \
