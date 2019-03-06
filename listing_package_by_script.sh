@@ -2,9 +2,15 @@
 
 rm -f installed_packages.csv && \
 
-dpkg -l | grep '^.i' | tr -s ' ' | cut -d' ' -f2,3 | tr ' ' : | cut -d: -f1,2 > installed_packages.csv
+dpkg-query -l | cut -c 5-91 > Installed_Pacakges.csv
 
-cat -n installed_packages.csv > installed_packages_list.csv
+cat -n Installed_Packages.csv > Installed_Packages_List.csv
 
-grep " installed " /var/log/dkpg.log > recent__installed_packeges.csv
+rm -rf Installed_Pacakges_list.csv
 
+if  [ -e /var/log/dpkg.log ];
+then
+echo " Recently no packages are upgraded"
+else
+grep " installed " /var/log/dpkg.log > recent__installed_packeges.csv
+fi

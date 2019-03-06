@@ -1,32 +1,42 @@
 #!/bin/bash
-sudo apt install software-properties-common -y
-sudo apt-get update -y && apt-get upgrade -y && apt-get clean
+#checking the environment
+if [[ -e /etc/debian_version ]]; then
+        ptoin=apt
+elif [[ -e /etc/centos-release || -e /etc/redhat-release ]]; then
+        ptoin=yum
+else
+        echo "Looks like you aren't running this installer on Debian, Ubuntu or CentOS"
+        exit
+fi
+
+sudo $ptoin install software-properties-common -y
+sudo $ptoin update -y && sudo $ptoin upgrade -y && sudo $ptoin clean
 
 # Installind curl browser
-sudo apt-get install curl -y
+sudo $ptoin install curl -y
 
 # Installing network tools
-sudo apt-get install net-tools -y
+sudo $ptoin install net-tools -y
 
 # Installing htools app to view the ram and process digitally
-sudo apt-get install htop -y
+sudo $ptoin install htop -y
 
 # Installing python
-sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt-get update
-sudo apt-get install python3.7 -y
+sudo $ptoin-repository ppa:deadsnakes/ppa
+sudo $ptoin update
+sudo $ptoint install python3.7 -y
 
 #to install openssh-server
-sudo apt-get install openssh-server -y
+sudo $ptoin install openssh-server -y
 
 #to install apache server
-sudo apt-get install apache2 -y
+sudo $ptoin install apache2 -y
 
 #to install java
-sudo apt install software-properties-common -y
+sudo $ptoin install software-properties-common -y
 
-sudo apt-get install default-jdk -y && \
-     apt-get install default-jre -y
+sudo $ptoin install default-jdk -y && \
+     $ptoin install default-jre -y
 
 #to know the java path
 #sudo update-alternatives --config java
@@ -82,7 +92,10 @@ sudo apt-get install default-jdk -y && \
 #run below command to config the tomcat
 #source ~/.bashrc
 #echo $CATALINA_HOME
-
+if [ $ptoin=apt ] then
+    clear
+         echo " Your Machine is Ubuntu"
+             
 sudo apt-get remove docker docker-engine docker.io containerd runc
 
 sudo apt-get update
@@ -108,12 +121,33 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
 docker --version
+else [ $ptoin=yum ] then
+clear
+     echo "Your Machine is Centos"
+     sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+      sudo yum install -y yum-utils \
+      device-mapper-persistent-data \
+      lvm2
+      sudo yum-config-manager \
+      --add-repo \
+      https://download.docker.com/linux/centos/docker-ce.repo
+      sudo yum install docker-ce docker-ce-cli containerd.io
+      sudo systemctl start docker
+      docker --version
+fi
 # kubernetes setup
-#sudo apt-get update && sudo apt-get install -y apt-transport-https && \
-#curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && \
+#sudo $ptoin update && sudo $ptoin install -y $ptoin-transport-https && \
+#curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo $ptoin-key add - && \
 #echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list && \
-#sudo apt-get update && \
-#sudo apt-get install -y kubectl kubeadm kubelet
+#sudo $ptoin update && \
+#sudo $ptoin install -y kubectl kubeadm kubelet
 #echo kubectl version
 
 #curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
@@ -126,8 +160,8 @@ docker --version
 #curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -#
 #echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-#sudo apt-get update
-#sudo apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev nodejs yarn
+#sudo $ptoin update
+#sudo $ptoin install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev nodejs yarn
 
 #cd
 #git clone https://github.com/rbenv/rbenv.git ~/.rbenv
@@ -147,21 +181,21 @@ docker --version
 
 #Installing Rails
 #curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-#sudo apt-get install -y nodejs
+#sudo $ptoin install -y nodejs
 
 #gem install rails -v 5.2.2
 
 #rails -v
 
 #Installing MySQL
-#sudo apt-get install -y mysql-server mysql-client libmysqlclient-dev
+#sudo $ptoin install -y mysql-server mysql-client libmysqlclient-dev
 
 #Installing PostgreSQL
 #sudo sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
 #wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
-#sudo apt-get update
-#sudo apt-get install -y postgresql-common
-#sudo apt-get install -y postgresql-9.5 libpq-dev
+#sudo $ptoin update
+#sudo $ptoin install -y postgresql-common
+#sudo $ptoin install -y postgresql-9.5 libpq-dev
 
 # Instaliing Zentyal server on linux machine
 #curl -s download.zentyal.com/install | sudo sh
@@ -170,7 +204,11 @@ docker --version
 #sudo usermod -a -G admin username
 
 # Installing openvpn
-sudo apt install openvpn -y
+sudo $ptoin install openvpn -y
+
+# Installing gnome tweak tool which contains adanced options for ubuntu gui
+sudo add-$ptoin-repository universe
+sudo $ptoin install gnome-tweak-tool
 
 
 
