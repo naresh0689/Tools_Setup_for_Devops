@@ -1,0 +1,8 @@
+# For Windows
+wmic bios get serialnumber
+
+# For Mac
+ioreg -l | grep IOPlatformSerialNumber
+
+# Ubuntu
+sudo dmidecode -t system | grep Serial
