@@ -1,0 +1,21 @@
+#!/bin/bash
+expr 12 + 8
+
+expr 12 \* 2
+
+echo "Enter two numbers"
+
+read x 
+
+read y
+
+sum=`expr $x + $y`
+
+echo "Sum = $sum"
+
+x=geeks
+
+len=`expr length $x`
+
+echo length of x is $len
+
