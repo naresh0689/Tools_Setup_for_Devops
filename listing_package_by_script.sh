@@ -1,13 +1,15 @@
 #!/bin/bash
-
-rm -f installed_packages.csv && \
-
-dpkg-query -l | cut -c 5-91 > Installed_Pacakges.csv
-
-cat -n Installed_Packages.csv > Installed_Packages_List.csv
-
-rm -rf Installed_Pacakges_list.csv
-
+if [ -e Installed_Packages.csv ];
+then
+Previous=$(ls -rt1 | tail -1)
+dpkg-query -l | cut -c 5-91 | sed '1,3d' > Installed_Packages.csv
+cat Installed_Packages.csv > "Installed_Packages_List-`date '+%Y-%m-%d'`.csv"
+Latest=$(ls -rt1 | tail -1)
+else
+dpkg-query -l | cut -c 5-91 | sed '1,3d' > Installed_Packages.csv
+cat Installed_Packages.csv > "Installed_Packages_List-`date '+%Y-%m-%d'`.csv"
+fi
+comp $Previous $Latest
 if  [ -e /var/log/dpkg.log ];
 then
 echo " Recently no packages are upgraded"
