@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# SSL setup is done or not
+dpkg-query -l openssl | cut -c 5-105 | sed '1,3d'
+sleep 1
+# firewall installed and configured
+dpkg-query -l ufw | cut -c 5-105 | sed '1,3d'
+sleep 1
