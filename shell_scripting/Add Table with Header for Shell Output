@@ -1,0 +1,7 @@
+awk 'BEGIN {print "======================================================="
+            print "S No | Package Name | Version"
+            print "======================================================="}
+/:/&&/^Error/ {print substr($1,1,9), substr($1,10,4),$2;next}
+/^Error/ {print substr($1,1,9), substr($1,10,4),substr($1,14)}
+END{print "========================================================"}
+' FS=":" OFS="|"  file_name.extension
