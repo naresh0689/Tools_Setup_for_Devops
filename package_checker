@@ -1,8 +1,23 @@
 #!/bin/bash
 
-# SSL setup is done or not
-dpkg-query -l openssl | cut -c 5-105 | sed '1,3d' 
-sleep 1
+# SSL setup is done /etc/ssl/openssl.cnf
+or not
+
 # firewall installed and configured
-dpkg-query -l ufw | cut -c 5-105 | sed '1,3d' && systemctl status ufw | sed -n '3p' | cut -c 1-17
-sleep 1
+if [[ -e /etc/ufw/ufw.conf ]]
+then echo "7.firewall is installed and Configured" >> requirement.txt
+   else
+echo
+fi
+# sudo users list
+echo "11.Sudo User's List" >> requirement.txt
+grep '^sudo:.*$' /etc/group | cut -d: -f4 >> requirement.txt
+
+echo "12. System's Password COmplexity"
+cat /etc/pam.d/common-password | sed -n '25p' >> requirement.txt
+# 14.SSL Setup
+if [[ -e /etc/ssl/openssl.cnf ]]
+then echo "14.SSL Setup is Done" >> requirement.txt
+   else
+echo "14.SSL Setup are not Done" >> requirement.txt
+fi
