@@ -1,23 +1,35 @@
 #!/bin/bash
 
-# SSL setup is done /etc/ssl/openssl.cnf
-or not
-
-# firewall installed and configured
+# 7.firewall installed and configured
 if [[ -e /etc/ufw/ufw.conf ]]
-then echo "7.firewall is installed and Configured" >> requirement.txt
+then echo "7.firewall is installed and Configured" >> "requirement-`date '+%Y-%m-%d'`.txt"
    else
 echo
 fi
+# 8. Scheduled Reboot Status
+echo "8.Scheduled Reboot Status"
+crontab -l >> "requirement-`date '+%Y-%m-%d'`.txt"
+#9.Ports Blocked
+#10. DNS mapping status
+echo "10.DNS Name-Server"
+cat /etc/resolv.conf | grep nameserver |awk '{print  $2}') >> "requirement-`date '+%Y-%m-%d'`.txt"
 # sudo users list
-echo "11.Sudo User's List" >> requirement.txt
-grep '^sudo:.*$' /etc/group | cut -d: -f4 >> requirement.txt
-
-echo "12. System's Password COmplexity"
-cat /etc/pam.d/common-password | sed -n '25p' >> requirement.txt
+echo "11.Sudo User's List"
+grep '^sudo:.*$' /etc/group | cut -d: -f4 >> "requirement-`date '+%Y-%m-%d'`.txt"
+#
+echo "12. System's Password Complexity"
+cat /etc/pam.d/common-password | sed -n '25p' >> "requirement-`date '+%Y-%m-%d'`.txt"
+#13.tomcat open ports
+echo "13.Tomcat open ports"
+netstat -nltp | grep java >> "requirement-`date '+%Y-%m-%d'`.txt"
 # 14.SSL Setup
 if [[ -e /etc/ssl/openssl.cnf ]]
-then echo "14.SSL Setup is Done" >> requirement.txt
-   else
-echo "14.SSL Setup are not Done" >> requirement.txt
+then echo "14.SSL Setup is Done" >> "requirement-`date '+%Y-%m-%d'`.txt"
+else
+echo "14.SSL Setup are not Done" >> "requirement-`date '+%Y-%m-%d'`.txt"
 fi
+#15.IP whitelisting done or not
+#16.web app version number
+echo "16. Webapp Version"
+dpkg -l webapp | cut -c 5-50 >> "requirement-`date '+%Y-%m-%d'`.txt"
+#17.data manager app installed or not
