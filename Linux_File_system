@@ -1,0 +1,33 @@
+#1.Contains file that is used by boot loader (grub.cfg)
+# /boot
+#2. root user home directory
+# /root
+#3.System devices are found under this directory like (disk,cd-rom,flash-drive,keyboard)
+# /dev
+#4. System Configuration files are under this directory
+# /etc
+#5. Everday user commands are under this directory
+# /bin -> /usr/bin
+#6. System/file system commands are under this directory
+# /sbin -> /usr/sbin
+#7. Optional add-on applications (not part of os)
+# /opt
+#8. Running process (only exist in memory)
+# /proc
+#9. Library files of commands and apps written in c program
+# /lib -> /usr/lib
+#10. Temporary files directory
+# /tmp
+# 11. Directory of user
+# /home
+# 12. System logs are under this directory
+# /var
+# 13. Sysytem daemons that start very early to store temporary run time files like PID
+# /run
+# 14. To Mount External file system
+# /mnt
+# 15. For cd-rom mounts
+# /media
+
+
+
