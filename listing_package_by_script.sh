@@ -3,11 +3,11 @@ if [ -e Installed_Packages.csv ];
 then
 Previous=$(ls -rt1 | tail -1)
 dpkg-query -l | cut -c 5-91 | sed '1,3d' > Installed_Packages.csv
-cat Installed_Packages.csv > "Installed_Packages_List-`date '+%Y-%m-%d'`.csv"
+cat Installed_Packages.csv > "Installed_Packages_List-`date '+%d-%m-%Y-%H-%M-%S'`.csv"
 Latest=$(ls -rt1 | tail -1)
 else
 dpkg-query -l | cut -c 5-91 | sed '1,3d' > Installed_Packages.csv
-cat Installed_Packages.csv > "Installed_Packages_List-`date '+%Y-%m-%d'`.csv"
+cat Installed_Packages.csv > "Installed_Packages_List-`date '+%d-%m-%Y-%H-%M-%S'`.csv"
 fi
 diff $Previous $Latest
 #if  [ -e /var/log/dpkg.log ];
