@@ -1,0 +1,6 @@
+#!/bin/bash
+[ 5 == 5 ] && echo "yes" || echo "no"
+[ 5 == 15 ] && echo "yes" || echo "no"
+[ 5 != 10 ] && echo "yes" || echo "no"
+[ -f /etc/resolv.conf ] && echo "file /etc/resolv.conf found." || echo "file /etc/resolv.conf not found."
+[ -f /etc/resolv1.conf ] && echo "file /etc/resolv.conf found." || echo "file /etc/resolv.conf not found."
