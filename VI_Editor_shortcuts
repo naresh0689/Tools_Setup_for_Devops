@@ -1,0 +1,40 @@
+#1. Cursor Navigation (if your arrow keys dont work on that old Sun box....)
+J 	Next line
+K 	Previous line
+H 	Left
+L 	Right
+Shift+G 	Bottom of document
+GG 	Top of document
+
+#2. Fast Search
+/ 	Search Term
+N 	Next
+N 	Previous
+
+#3. Command Mode
+: 	enter command mode
+:w 	write
+:q 	quit
+:q! 	quit without saving
+:wq 	Write and quit
+ZZ 	Write and quit
+:e <filename> 	open <filename>
+Esc 	escape command mode
+u 	undo last command
+
+#4. From Normal to Edit Mode
+I 	Insert at current position
+I 	Insert at start of line
+A 	Append to end of line
+O 	Insert Line Below
+O 	Insert Line Above
+S 	Delete character at current position and insert
+S 	Delete the current line and insert
+
+#5. Clipboard
+dw 	delete word
+dd 	delete line
+P 	put after cursor
+P 	put before cursor
+yw 	copy word
+yy 	copy line
