@@ -1,0 +1,12 @@
+#!/Bin/bash
+read -s -p "enter your password " pass
+echo 
+if test -z $pass 
+then
+    echo "no password was entered!!! Cannot verify an empty password!!!"	
+    exit 1
+fi
+if test "$pass" != "tom"
+then
+    echo "wrong password!"
+fi

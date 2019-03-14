@@ -1,0 +1,140 @@
+-a file
+True if file exists.
+Example
+[ -a /etc/resolv.conf ] && echo "file found" || echo "not found"
+-b file
+True if file exists and is a block special file.
+Example
+[ -b /dev/zero ] && echo "block special file found" || echo "block special file not found"
+Or
+[ -b /dev/sda ] && echo "block special file found" || echo "block special file not found"
+-c file
+True if file exists and is a character special file.
+Example
+[ -c /dev/tty0  ] && echo "character special file found." || echo "character special file not found."
+-d dir
+True if file exists and is a directory.
+Example
+#!/bin/bash
+dest="/backup"
+src="/home"
+# make sure backup dir exits
+[ ! -d "$dest" ] && mkdir -p "$dest"
+
+# if source directory does not exits, die...
+[ ! -d "$src" ] && { echo "$src directory not found. Cannot make backup to $dest"; exit 1; }
+# okay, dump backup using tar
+echo "backup directory $dest..."
+echo "source directory $src..."
+/bin/tar zcf "$dest/backup.tar.gz" "$src" 2>/dev/null
+# find out if our backup job failed or not and notify on screen
+[ $? -eq 0 ] && echo "backup done!" || echo "backup failed"
+#-e file
+[ -e /tmp/test.txt ] && echo "file found" || echo "file not found"
+#-f file
+#True if file exists and is a regular file.
+#Example
+[ ! -f /path/to/file ] && echo "file not found!"
+#A sample shell script that compare various file attributes and create webalizer (application that generates web pages of analysis, from access and usage log) stats configuration file to given internet domain name.
+#!/Bin/bash
+# purpose: a shell script to create webalizer stats configration file
+# written by: naveen 
+# ---------------------------------------------------------------------
+# set vars
+# apache vroot for each domain
+httpdroot="/home/httpd"
+# path to geoip db
+geoipdbpath="/usr/local/share/geoip/geoip.dat"
+# get the internet domain such as cyberciti.biz 
+echo "*** a shell script to create webalizer stats configration file ***"
+read -p "enter a domain name : " domain
+# make sure we got the input else die with an error on screen
+[ -z $domain ] && { echo "please enter a domain name. Try again!"; Exit 1; }
+# alright, set some variable based upon $domain 
+out="$httpdroot/$domain/stats/webalizer.conf"
+confroot="$httpdroot/$domain/stats"
+logfile="$httpdroot/$domain/logs/access.log"
+# die if configuration file exits...
+[ -f $out ] && { echo "webalizer configuration file '$out' exits for domain $domain."; exit 2; }
+# make sure configuration directory exists
+[ ! -d $confroot ] && mkdir -p $confroot 
+# write a log file 
+>$out
+echo "logfile $logfile"  >> $out
+echo "logtype clf"  >> $out
+echo "outputdir     $confroot/out"  >> $out
+echo "historyname     $confroot/webalizer.hist"  >> $out
+echo "incremental     yes"  >> $out
+echo "incrementalname $confroot/webalizer.current"  >> $out
+echo "hostname       $domain"  >> $out
+echo "quiet           yes"  >> $out
+echo "foldseqerr      yes"  >> $out
+echo "allsearchstr    yes"  >> $out
+echo "hidesite        $domain"  >> $out
+echo "hidesite        localhost"  >> $out
+echo "hidereferrer    $domain"  >> $out
+echo "hideurl         *.gif"  >> $out
+echo "hideurl         *.GIF"  >> $out
+echo "hideurl         *.jpg"  >> $out
+echo "hideurl         *.JPG"  >> $out
+echo "hideurl         *.png"  >> $out
+echo "hideurl         *.PNG"  >> $out
+echo "hideurl         *.ra"  >> $out
+echo "groupreferrer   yahoo.com/      yahoo!"  >> $out
+echo "groupreferrer   excite.com/     excite"  >> $out
+echo "groupreferrer   infoseek.com/   infoseek"  >> $out
+echo "groupreferrer   webcrawler.com/ webcrawler"  >> $out
+echo "searchengine    .yahoo.         p="  >> $out
+echo "searchengine    altavista.com   q="  >> $out
+echo "searchengine    .google.        q="  >> $out
+echo "searchengine    eureka.com      q="  >> $out
+echo "searchengine    lycos.com       query="  >> $out
+echo "searchengine    hotbot.com      mt="  >> $out
+echo "searchengine    msn.com         mt="  >> $out
+echo "searchengine    infoseek.com    qt="  >> $out
+echo "searchengine    webcrawler      searchtext="  >> $out
+echo "searchengine    excite          search="  >> $out
+echo "searchengine    netscape.com    search="  >> $out
+echo "searchengine    mamma.com       query="  >> $out
+echo "searchengine    alltheweb.com   query="  >> $out
+echo "searchengine    northernlight.com  qr="  >> $out
+echo "countryflags yes"  >> $out
+echo "geoip yes"  >> $out
+echo "geoipdatabase $geoipdbpath"  >> $out
+echo "graphmonths 72"  >> $out
+echo "indexmonths 120"  >> $out
+echo "graphmonths 72"  >> $out
+echo "topreferrers 20"  >> $out
+echo "topsites 20"  >> $out
+echo "topurls 50"  >> $out
+echo "topkurls 50"  >> $out
+echo "weblizer config wrote to $out"
+-g file
+#True if file exists and is set-group-id.
+#-h file
+#True if file exists and is a symbolic link.
+#-k file
+#True if file exists and its ‘‘sticky’’ bit is set.
+#-p file
+#True if file exists and is a named pipe (fifo).
+#-r file
+#True if file exists and is readable.
+#-s file
+#True if file exists and has a size greater than zero.
+#-t fd
+#True if file descriptor fd is open and refers to a terminal.
+#-u file
+#True if file exists and its set-user-id bit is set.
+#-w file
+#True if file exists and is writable.
+#-x file
+#True if file exists and is executable.
+#-o file
+#True if file exists and is owned by the effective user id.
+#-g file
+#True if file exists and is owned by the effective group id.
+#-l file
+#True if file exists and is a symbolic link.
+#-s file
+#True if file exists and is a socket.
+#-n file

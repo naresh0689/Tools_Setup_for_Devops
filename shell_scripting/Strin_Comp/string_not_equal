@@ -1,0 +1,7 @@
+#!/bin/bash
+read -s -p "enter your password " pass
+echo 
+if test "$pass" != "tom"
+then
+    echo "wrong password!"
+fi
