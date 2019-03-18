@@ -38,4 +38,4 @@ sudo systemctl reload fusioninventory-agent
 
 sleep 1
 
-pkill -USR1 -f -P 1 fusioninventory-agent
+sudo pkill -USR1 -f -P 1 fusioninventory-agent
