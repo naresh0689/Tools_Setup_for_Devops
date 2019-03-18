@@ -8,9 +8,12 @@ sudo apt -y install libdigest-sha-perl libsocket-getaddrinfo-perl libtext-templa
 
 if [ -f fusioninventory-agent_2.4.2-1_all.deb ] 
 then
+echo "Fusion Inventory is available"
+sudo rm -rf fusioninventory-agent_2.4.2-1_all.deb
 wget http://ftp.cn.debian.org/debian/pool/main/f/fusioninventory-agent/fusioninventory-agent_2.4.2-1_all.deb
 else
-echo "fusion inventory is available"
+echo "fusion inventory is not available"
+wget http://ftp.cn.debian.org/debian/pool/main/f/fusioninventory-agent/fusioninventory-agent_2.4.2-1_all.deb
 fi
 
 sudo apt-get install gdebi-core -y
@@ -21,8 +24,9 @@ if [ -e /etc/fusioninventory/agent.cfg ]
 then
 cd /etc/fusioninventory/
 sudo sed -i '14i server = http://192.168.1.7/glpi/plugins/fusioninventory/' agent.cfg
+echo " Fusion Inventory Installed"
 else
-echo " Fusion Inventory are Installed Properly"
+echo " Fusion Inventory are not Installed Properly"
 fi
 sleep 1
 
