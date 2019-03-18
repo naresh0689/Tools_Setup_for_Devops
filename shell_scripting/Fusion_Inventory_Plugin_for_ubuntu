@@ -30,11 +30,11 @@ echo " Fusion Inventory are not Installed Properly"
 fi
 sleep 1
 
-systemctl restart fusioninventory-agent
+sudo systemctl restart fusioninventory-agent
 
 sleep 1
 
-systemctl reload fusioninventory-agent
+sudo systemctl reload fusioninventory-agent
 
 sleep 1
 
