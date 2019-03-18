@@ -1,0 +1,17 @@
+#!/bin/bash
+sudo apt-get update -y
+sudo apt -y install dmidecode hwdata ucf hdparm
+sudo apt -y install perl libuniversal-require-perl libwww-perl libparse-edid-perl
+sudo apt -y install libproc-daemon-perl libfile-which-perl libhttp-daemon-perl
+sudo apt -y install libxml-treepp-perl libyaml-perl libnet-cups-perl libnet-ip-perl
+sudo apt -y install libdigest-sha-perl libsocket-getaddrinfo-perl libtext-template-perl
+
+wget https://packages.debian.org/sid/all/fusioninventory-agent/download
+
+sudo sed -i '14i server = http://192.168.1.7/glpi/plugins/fusioninventory/' /etc/fusioninventory/agent.cfg
+
+systemctl restart fusioninventory-agent
+
+systemctl reload fusioninventory-agent
+
+pkill -USR1 -f -P 1 fusioninventory-agent
