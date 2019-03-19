@@ -15,7 +15,7 @@ fi
 
 if [ -e /etc/audisp/plugins.d/au-remote.conf ]
 then 
-sudo sed -i ' /activate = /c\activate = yes' /etc/audisp/plugins.d/au-remote.conf
+sudo sed -i ' /active = /c\active = yes' /etc/audisp/plugins.d/au-remote.conf
 fi
 
 sleep 1
