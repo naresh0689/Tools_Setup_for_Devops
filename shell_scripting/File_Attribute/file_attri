@@ -48,7 +48,7 @@ echo "source directory $src..."
 httpdroot="/home/httpd"
 # path to geoip db
 geoipdbpath="/usr/local/share/geoip/geoip.dat"
-# get the internet domain such as cyberciti.biz 
+# get the internet domain such as "google.com"
 echo "*** a shell script to create webalizer stats configration file ***"
 read -p "enter a domain name : " domain
 # make sure we got the input else die with an error on screen
