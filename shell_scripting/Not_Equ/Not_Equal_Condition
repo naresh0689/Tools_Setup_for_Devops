@@ -20,7 +20,6 @@ Here is a sample script that use logical not ! to make backup directories on fly
 
 #!/bin/bash
 # A sample shell script to backup MySQL database
-
 # Get todays date
 NOW=$(date +"%d-%m-%Y")
 
