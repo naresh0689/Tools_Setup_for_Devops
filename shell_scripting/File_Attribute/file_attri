@@ -29,12 +29,15 @@ echo "source directory $src..."
 /bin/tar zcf "$dest/backup.tar.gz" "$src" 2>/dev/null
 # find out if our backup job failed or not and notify on screen
 [ $? -eq 0 ] && echo "backup done!" || echo "backup failed"
+
 #-e file
 [ -e /tmp/test.txt ] && echo "file found" || echo "file not found"
+
 #-f file
 #True if file exists and is a regular file.
 #Example
 [ ! -f /path/to/file ] && echo "file not found!"
+
 #A sample shell script that compare various file attributes and create webalizer (application that generates web pages of analysis, from access and usage log) stats configuration file to given internet domain name.
 #!/Bin/bash
 # purpose: a shell script to create webalizer stats configration file
@@ -109,32 +112,46 @@ echo "topsites 20"  >> $out
 echo "topurls 50"  >> $out
 echo "topkurls 50"  >> $out
 echo "weblizer config wrote to $out"
+
 -g file
 #True if file exists and is set-group-id.
+
 #-h file
 #True if file exists and is a symbolic link.
+
 #-k file
 #True if file exists and its ‘‘sticky’’ bit is set.
+
 #-p file
 #True if file exists and is a named pipe (fifo).
+
 #-r file
 #True if file exists and is readable.
+
 #-s file
 #True if file exists and has a size greater than zero.
+
 #-t fd
 #True if file descriptor fd is open and refers to a terminal.
+
 #-u file
 #True if file exists and its set-user-id bit is set.
+
 #-w file
 #True if file exists and is writable.
+
 #-x file
 #True if file exists and is executable.
+
 #-o file
 #True if file exists and is owned by the effective user id.
+
 #-g file
 #True if file exists and is owned by the effective group id.
+
 #-l file
 #True if file exists and is a symbolic link.
+
 #-s file
 #True if file exists and is a socket.
 #-n file
