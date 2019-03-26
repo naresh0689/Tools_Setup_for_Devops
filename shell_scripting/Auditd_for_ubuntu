@@ -1,0 +1,30 @@
+#!/bin/bash
+
+if [[ "$EUID" -ne 0 ]]; then
+	echo "Sorry, you need to run this as root"
+	exit
+fi
+
+sudo apt install -y auditd audispd-plugins
+
+if [ -e /etc/audisp/audisp-remote.conf ]
+then
+sudo sed -i ' /remote_server =/c\remote_user = 192.168.1.7' /etc/audisp/audisp-remote.conf
+sudo sed -i ' /port = /c\port = 60' /etc/audisp/audisp-remote.conf
+fi
+
+if [ -e /etc/audisp/plugins.d/au-remote.conf ]
+then 
+sudo sed -i ' /active = /c\active = yes' /etc/audisp/plugins.d/au-remote.conf
+fi
+
+sleep 1
+
+sudo service auditd restart
+
+sudo echo "-a exit,always -F arch=b64 -S execve" >> /etc/audit/rules.d/audit.rules
+sudo echo "-a exit,always -F arch=b32 -S execve" >> /etc/audit/rules.d/audit.rules
+
+sleep 1
+
+sudo service auditd restart

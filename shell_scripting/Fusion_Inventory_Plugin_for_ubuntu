@@ -1,0 +1,41 @@
+#!/bin/bash
+sudo apt-get update -y
+sudo apt -y install dmidecode hwdata ucf hdparm
+sudo apt -y install perl libuniversal-require-perl libwww-perl libparse-edid-perl
+sudo apt -y install libproc-daemon-perl libfile-which-perl libhttp-daemon-perl
+sudo apt -y install libxml-treepp-perl libyaml-perl libnet-cups-perl libnet-ip-perl
+sudo apt -y install libdigest-sha-perl libsocket-getaddrinfo-perl libtext-template-perl
+
+if [ -f fusioninventory-agent_2.4.2-1_all.deb ] 
+then
+echo "Fusion Inventory is available"
+sudo rm -rf fusioninventory-agent_2.4.2-1_all.deb
+wget http://ftp.cn.debian.org/debian/pool/main/f/fusioninventory-agent/fusioninventory-agent_2.4.2-1_all.deb
+else
+echo "fusion inventory is not available"
+wget http://ftp.cn.debian.org/debian/pool/main/f/fusioninventory-agent/fusioninventory-agent_2.4.2-1_all.deb
+fi
+
+sudo apt-get install gdebi-core -y
+
+sudo dpkg -i fusioninventory-agent_2.4.2-1_all.deb
+
+if [ -e /etc/fusioninventory/agent.cfg ]
+then
+cd /etc/fusioninventory/
+sudo sed -i '14i server = http://192.168.1.7/glpi/plugins/fusioninventory/' agent.cfg
+echo " Fusion Inventory Installed"
+else
+echo " Fusion Inventory are not Installed Properly"
+fi
+sleep 1
+
+sudo systemctl restart fusioninventory-agent
+
+sleep 1
+
+sudo systemctl reload fusioninventory-agent
+
+sleep 1
+
+sudo pkill -USR1 -f -P 1 fusioninventory-agent
