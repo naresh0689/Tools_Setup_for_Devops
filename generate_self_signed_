@@ -1,0 +1,25 @@
+keytool -genkeypair -noprompt \
+ -alias dineshtest \
+ -dname "CN=local.com, OU=ID, O=IBM, L=Hursley, S=Hants, C=GB" \
+ -keystore keystore \
+ -storepass password \
+ -keypass password
+#!/bin/bash
+
+keytool-genkeypair -noprompt -alias dineshtest \ 
+-dname "CN=localhost, OU=your organization unit, O=organization name, L=state or province, S=state name, C=country \
+-keyalg RSA -validity 36500 -keystore dineshtest.ks -keypass password -ext san=ip:192.168.1.140,dns:localhost
+
+keytool -certreq -alias dineshtest -file dinesh.cer -keystore dineshtest.ks
+
+keytool -exportcert -alias dineshtest -rfc -file dinesh.cer -keystore dineshtest.ks
+
+cat <<EOT >> /opt/sensen/apache-tomcat-8.0.33/conf/server.xml
+<connector port="443"
+protocol="org.apache.coyote.
+http11.Http11NioProtocol"
+  maxThreads="150" SSLEnabled="true"
+scheme="https" secure="true"
+  clientAuth="false" sslProtocol="TLS"
+keystorefile="/home/sensen/ssl/dineshtest.ks"
+keystorePass="Testsensen">/
