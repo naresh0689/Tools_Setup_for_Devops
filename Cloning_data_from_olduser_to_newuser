@@ -1,0 +1,7 @@
+#!/bin/bash
+sudo bash
+user=$USER
+cd /home/$user
+#tar cf - . | (cd ../home/shris.local/$user;tar xf -)
+#chown -R pete:pete /home/pete
+#exit
